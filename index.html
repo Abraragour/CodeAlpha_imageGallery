@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Image Gallery</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-black text-slate-900 mb-4 tracking-tight">
+                Photo<span class="text-blue-600">Hub</span>
+            </h1>
+            <p class="text-slate-500">Discover world-class photography in one place</p>
+        </header>
+
+        <div class="flex justify-center mb-16">
+            <div class="relative w-full max-w-2xl group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-500 transition-colors">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" id="searchInput" 
+                       class="w-full pl-11 pr-32 py-4 bg-white rounded-2xl shadow-sm border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none text-slate-700 placeholder:text-slate-400" 
+                       placeholder="Search for anything...">
+                <button id="searchBtn" 
+                        class="absolute right-2 top-2 bottom-2 bg-blue-600 text-white px-8 rounded-xl hover:bg-blue-700 active:scale-95 transition-all font-semibold shadow-md shadow-blue-200">
+                    Search
+                </button>
+            </div>
+        </div>
+
+<div class="flex flex-wrap justify-center gap-4 mb-10">
+    <button onclick="quickSearch('All')" class="px-6 py-2 rounded-full bg-white shadow-sm hover:bg-blue-600 hover:text-white transition">All</button>
+    <button onclick="quickSearch('Nature')" class="px-6 py-2 rounded-full bg-white shadow-sm hover:bg-blue-600 hover:text-white transition">Nature</button>
+    <button onclick="quickSearch('Architecture')" class="px-6 py-2 rounded-full bg-white shadow-sm hover:bg-blue-600 hover:text-white transition">Architecture</button>
+    <button onclick="quickSearch('Technology')" class="px-6 py-2 rounded-full bg-white shadow-sm hover:bg-blue-600 hover:text-white transition">Technology</button>
+</div>
+        <div class="relative">
+    <div id="loader" class="hidden flex flex-col items-center justify-center py-10 w-full">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
+        <p class="mt-4 text-blue-500 font-medium">Loading...</p>
+    </div>
+    
+    <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    </div>
+</div>
+     <div class="flex justify-center mt-12 mb-20">
+    <button id="loadMoreBtn" class="hidden bg-white border-2 border-blue-600 text-blue-600 px-10 py-3 rounded-xl font-bold hover:bg-blue-600 hover:text-white transition-all shadow-lg active:scale-95">
+        Show More
+    </button>
+</div>
+    </div>
+<div id="imageModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 transition-all">
+    
+    <button id="closeModal" class="absolute top-6 right-8 text-white/30 hover:text-white hover:rotate-90 transition-all duration-300 text-4xl z-[110]">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <button id="prevBtn" class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-14 h-14 flex items-center justify-center rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white border border-white/10 transition-all z-[110]">
+        <i class="fa-solid fa-chevron-left text-2xl"></i>
+    </button>
+    
+    <button id="nextBtn" class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-14 h-14 flex items-center justify-center rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white border border-white/10 transition-all z-[110]">
+        <i class="fa-solid fa-chevron-right text-2xl"></i>
+    </button>
+
+    <div class="relative flex flex-col items-center max-w-full">
+        <div class="p-1 bg-white/10 rounded-[2.5rem] shadow-2xl backdrop-blur-sm border border-white/20">
+            <img id="modalImg" src="" 
+                 class="rounded-[2.3rem] max-h-[70vh] md:max-h-[80vh] w-auto object-contain shadow-2xl block mx-auto transition-opacity duration-300">
+        </div>
+        
+        <div class="mt-6 text-center">
+            <p id="modalInfo" class="text-white font-medium text-lg mb-1"></p>
+            <span class="text-white/20 text-[10px] tracking-[0.5em] uppercase font-light">Visual Hub Preview</span>
+        </div>
+    </div>
+</div>
+
+    <script src="Js/index.js"></script>
+</body>
+</html>
