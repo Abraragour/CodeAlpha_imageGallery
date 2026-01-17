@@ -108,10 +108,22 @@ function openModal(index) {
     }
 }
 
-document.getElementById('closeModal').onclick = () => {
+function closeMyModal() {
     modal.classList.add('hidden');
     document.body.style.overflow = 'auto';
+}
+
+document.getElementById('closeModal').onclick = closeMyModal;
+
+modal.onclick = (e) => {
+    if (e.target === modal) closeMyModal();
 };
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+        closeMyModal();
+    }
+});
 
 document.getElementById('nextBtn').onclick = (e) => {
     e.stopPropagation();
